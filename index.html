@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瑞圣合空间有限公司 - 选择入口</title>
+    <link rel="stylesheet" href="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #1abc9c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .portal-cards {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .portal-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+        
+        .portal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .portal-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .portal-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .portal-card p {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .btn-portal {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn-portal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            opacity: 0.8;
+        }
+        
+        .login-modal .modal-content {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .login-modal .modal-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            border: none;
+            padding: 2rem;
+        }
+        
+        .login-modal .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .login-modal .modal-body {
+            padding: 2rem;
+        }
+        
+        .login-modal .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .login-modal .form-label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .login-modal .form-control {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 1rem;
+        }
+        
+        .login-modal .form-control:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .login-modal .btn-primary {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+        }
+        
+        .login-modal .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .login-modal .error-message {
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>瑞圣合空间有限公司</h1>
+            <p>专业装修材料供应商 - 品质保证，服务至上</p>
+        </div>
+        
+        <div class="portal-cards">
+            <div class="portal-card" onclick="window.location.href='user端/html/index.html'">
+                <div class="portal-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>用户端</h3>
+                <p>浏览材料库，查看材料详情，根据需求筛选材料，加入采购单</p>
+                <button class="btn btn-portal">
+                    <i class="fas fa-arrow-right me-2"></i>进入用户端
+                </button>
+            </div>
+            
+            <div class="portal-card" onclick="openAdminLogin()">
+                <div class="portal-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>管理员端</h3>
+                <p>管理材料库，添加、编辑、删除材料，维护库存信息</p>
+                <button class="btn btn-portal">
+                    <i class="fas fa-arrow-right me-2"></i>进入管理员端
+                </button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 瑞圣合空间有限公司</p>
+        </div>
+    </div>
+    
+    <div class="modal fade login-modal" id="adminLoginModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">管理员登录</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label class="form-label">账号</label>
+                            <input type="text" class="form-control" id="username" placeholder="请输入管理员账号">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">密码</label>
+                            <input type="password" class="form-control" id="password" placeholder="请输入密码">
+                        </div>
+                        <div id="errorMessage" class="error-message" style="display: none;"></div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="login()">登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/popper.min.js"></script>
+    <script src="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/bootstrap.min.js"></script>
+    <script>
+        function openAdminLogin() {
+            $('#adminLoginModal').modal('show');
+        }
+        
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (username === 'admin' && password === '123456') {
+                errorMessage.style.display = 'none';
+                $('#adminLoginModal').modal('hide');
+                window.location.href = 'admin端/html/material-management.html';
+            } else {
+                errorMessage.textContent = '账号或密码错误，请重试';
+                errorMessage.style.display = 'block';
+            }
+        }
+        
+        document.getElementById('loginForm').addEventListener('keypress', function(e) {
+            if (e.which === 13) {
+                login();
+            }
+        });
+    </script>
+</body>
+</html>

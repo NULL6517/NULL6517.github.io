@@ -1,0 +1,39 @@
+.filter-section {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.filter-group {
+    margin-bottom: 0.5rem;
+}
+
+.filter-title {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: var(--primary-color);
+    font-size: 0.85rem;
+}
+
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.filter-option {
+    background-color: #f0f4f8;
+    border: none;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-option:hover, .filter-option.active {
+    background-color: var(--secondary-color);
+    color: white;
+}

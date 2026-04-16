@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加材料 - 瑞圣合空间有限公司</title>
+    <link rel="stylesheet" href="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/material-management.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../user端/html/index.html">
+                瑞圣合空间有限公司
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../user端/html/index.html">用户端首页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="material-management.html">材料管理</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="add-material.html">添加材料</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio-management.html">作品集管理</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="container text-center">
+            <h1 class="display-4 font-weight-bold mb-4">添加新材料</h1>
+            <p class="lead mb-4">填写材料信息添加到材料库</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-plus-circle me-2"></i>材料信息</h5>
+            </div>
+            <div class="card-body">
+                <form id="addMaterialForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>材料名称 <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="materialName" required placeholder="请输入材料名称">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>类别 <span class="text-danger">*</span></label>
+                                <select class="form-control" id="materialCategory" required>
+                                    <option value="">选择类别</option>
+                                    <option value="floor">地板</option>
+                                    <option value="tile">瓷砖</option>
+                                    <option value="paint">涂料</option>
+                                    <option value="door">门窗</option>
+                                    <option value="hardware">五金</option>
+                                    <option value="bathroom">卫浴</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>品牌 <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="materialBrand" required placeholder="请输入品牌名称">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>价格 <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">¥</span>
+                                    </div>
+                                    <input type="number" class="form-control" id="materialPrice" required placeholder="0.00" step="0.01">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>风格 <span class="text-danger">*</span></label>
+                                <select class="form-control" id="materialStyle" required>
+                                    <option value="">选择风格</option>
+                                    <option value="modern">现代简约</option>
+                                    <option value="european">欧式风格</option>
+                                    <option value="chinese">中式风格</option>
+                                    <option value="minimalist">极简风格</option>
+                                    <option value="industrial">工业风格</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>库存数量 <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="materialStock" required placeholder="0" min="0">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>单位 <span class="text-danger">*</span></label>
+                                <select class="form-control" id="materialUnit" required>
+                                    <option value="">选择单位</option>
+                                    <option value="平方米">平方米</option>
+                                    <option value="件">件</option>
+                                    <option value="桶">桶</option>
+                                    <option value="扇">扇</option>
+                                    <option value="套">套</option>
+                                    <option value="个">个</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>规格</label>
+                        <input type="text" class="form-control" id="materialSpec" placeholder="例如：1200×150×18mm">
+                    </div>
+
+                    <div class="form-group">
+                        <label>图片</label>
+                        <input type="file" class="form-control" id="materialImage" accept="image/*">
+                        <small class="text-muted">建议使用高清图片，尺寸建议800×600px</small>
+                    </div>
+                    <div class="form-group">
+                        <img id="imagePreview" src="" alt="图片预览" style="max-width: 200px; max-height: 150px; display: none;">
+                    </div>
+
+                    <div class="form-group">
+                        <label>材料描述</label>
+                        <textarea class="form-control" id="materialDescription" rows="4" placeholder="请输入材料的详细描述"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>标签</label>
+                        <input type="text" class="form-control" id="materialTags" placeholder="例如：环保, 耐用, 热销">
+                        <small class="text-muted">多个标签用逗号分隔</small>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="isFeatured">
+                        <label class="form-check-label" for="isFeatured">
+                            设为推荐材料
+                        </label>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="isNew" checked>
+                        <label class="form-check-label" for="isNew">
+                            设为新品
+                        </label>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="button" class="btn btn-secondary btn-lg mr-3" onclick="resetForm()">
+                            <i class="fas fa-undo me-2"></i>重置
+                        </button>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="saveMaterial()">
+                            <i class="fas fa-save me-2"></i>保存材料
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>瑞圣合空间有限公司</h5>
+                    <p>专业装修材料供应商 - 品质保证，服务至上</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>快速链接</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../../user端/html/index.html" class="text-light">用户端首页</a></li>
+                        <li><a href="material-management.html" class="text-light">材料管理</a></li>
+                        <li><a href="add-material.html" class="text-light">添加材料</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>联系我们</h5>
+                    <p><i class="fas fa-phone me-2"></i> 13607171285</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> 湖北省·武汉市·硚口区</p>
+            <p>古田二路龙湖春江郦城二期底商13栋-402</p>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <p class="text-center mb-0">&copy; 2025 瑞圣合空间有限公司</p>
+        </div>
+    </footer>
+
+    <script src="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/popper.min.js"></script>
+    <script src="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/bootstrap.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/add-material.js"></script>
+</body>
+</html>

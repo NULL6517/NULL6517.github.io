@@ -1,0 +1,80 @@
+.management-tabs {
+    margin-bottom: 2rem;
+}
+
+.nav-tabs .nav-link {
+    color: var(--primary-color);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px 30px 0 0;
+    margin-right: 5px;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.table-responsive {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.table th {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.action-buttons .btn {
+    margin-right: 5px;
+}
+
+.form-section {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.modal-header {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.modal-title {
+    color: white;
+}
+
+.btn-success {
+    background-color: var(--accent-color);
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #16a085;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+.btn-warning {
+    background-color: #f39c12;
+    border: none;
+}
+
+.btn-warning:hover {
+    background-color: #d68910;
+}
