@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瑞圣合空间有限公司 - 作品集</title>
+    <link rel="stylesheet" href="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        /* 轮播图样式 */
+        .carousel {
+            margin-bottom: 3rem;
+        }
+        .carousel-item {
+            height: 60vh;
+            min-height: 400px;
+        }
+        .carousel-item img {
+            height: 100%;
+            object-fit: cover;
+        }
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        
+        /* 筛选栏样式 */
+        .filter-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        .filter-group {
+            margin-bottom: 1.5rem;
+        }
+        .filter-title {
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            color: #495057;
+        }
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        .filter-option {
+            background-color: #ffffff;
+            color: #343a40;
+            border: 1px solid #dee2e6;
+            border-radius: 20px;
+            padding: 5px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .filter-option:hover {
+            border-color: #007bff;
+            color: #007bff;
+        }
+        .filter-option.active {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+        
+        /* 作品网格样式 */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .portfolio-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .portfolio-item-content {
+            padding: 1.5rem;
+        }
+        .portfolio-item-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #343a40;
+        }
+        .portfolio-item-category {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 1rem;
+        }
+        .portfolio-item-description {
+            font-size: 0.95rem;
+            color: #495057;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        .portfolio-item-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* VR作品样式 */
+        .vr-container {
+            margin-top: 3rem;
+        }
+        .vr-item {
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        .vr-image-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+        .vr-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .vr-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .vr-image-container:hover .vr-overlay {
+            opacity: 1;
+        }
+        .vr-image-container:hover .vr-image {
+            transform: scale(1.05);
+        }
+        .vr-image-container {
+            cursor: pointer;
+        }
+        .vr-overlay-content {
+            text-align: center;
+            color: white;
+        }
+        .vr-description {
+            padding: 2rem;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .carousel-item {
+                height: 40vh;
+                min-height: 300px;
+            }
+            .filter-options {
+                justify-content: center;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                瑞圣合空间有限公司
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">首页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="material-hub.html">材料库</a></li>
+                    <li class="nav-item"><a class="nav-link" href="material-detail.html">材料详情</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="portfolio.html">作品集</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html">采购单</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about-us.html">关于我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 轮播图 -->
+    <div id="portfolioCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators" id="carouselIndicators">
+            <!-- 动态生成 -->
+        </ol>
+        <div class="carousel-inner" id="carouselInner">
+            <!-- 动态生成 -->
+        </div>
+        <a class="carousel-control-prev" href="#portfolioCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">上一张</span>
+        </a>
+        <a class="carousel-control-next" href="#portfolioCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">下一张</span>
+        </a>
+    </div>
+
+    <main class="container mt-5">
+        <!-- 筛选栏 -->
+        <div class="filter-section fade-in" style="padding: 1rem;">
+            <div class="row" style="margin: 0;">
+                <!-- 空间分类 -->
+                <div class="col-md-12 mb-2" style="padding: 0;">
+                    <div class="filter-group" style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                        <div class="filter-title" style="margin-right: 10px; font-weight: 500;">空间分类：</div>
+                        <div class="filter-options" style="flex: 1; display: flex; flex-wrap: wrap; gap: 5px;">
+                            <button class="filter-option active" style="padding: 3px 12px; font-size: 13px;" onclick="filterByCategory('all', this)">全部</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByCategory('住宅公寓', this)">住宅公寓</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByCategory('别墅豪宅', this)">别墅豪宅</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByCategory('酒店民宿', this)">酒店民宿</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByCategory('样板间', this)">样板间</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByCategory('商业空间', this)">商业空间</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByCategory('公共空间', this)">公共空间</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByCategory('医疗康养', this)">医疗康养</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByCategory('售楼处', this)">售楼处</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByCategory('办公空间', this)">办公空间</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByCategory('学校教育', this)">学校教育</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByCategory('建筑', this)">建筑</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByCategory('餐饮空间', this)">餐饮空间</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByCategory('娱乐空间', this)">娱乐空间</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 风格分类 -->
+                <div class="col-md-12 mb-2" style="padding: 0;">
+                    <div class="filter-group" style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                        <div class="filter-title" style="margin-right: 10px; font-weight: 500;">风格分类：</div>
+                        <div class="filter-options" style="flex: 1; display: flex; flex-wrap: wrap; gap: 5px;">
+                            <button class="filter-option active" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('all', this)">全部</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('chinese', this)">中式</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('minimalist', this)">极简</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('modern', this)">现代</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('light', this)">轻奢</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('zen', this)">禅意</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('vintage', this)">复古</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('mixed', this)">混搭</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('luxury', this)">奢华</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('southeast', this)">东南亚</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('scandinavian', this)">北欧</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('american', this)">美式</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('japanese', this)">日式</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('european', this)">欧式</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('industrial', this)">工业风</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('ins', this)">Ins风</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('cream', this)">奶油风</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('wood', this)">原木风</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('concrete', this)">混泥土风</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('french', this)">法式</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="filterByStyle('italian', this)">意式</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 排序 -->
+                <div class="col-md-12" style="padding: 0;">
+                    <div class="filter-group" style="display: flex; align-items: center;">
+                        <div class="filter-title" style="margin-right: 10px; font-weight: 500;">排序：</div>
+                        <div class="filter-options" style="display: flex; gap: 5px;">
+                            <button class="filter-option active" style="padding: 3px 12px; font-size: 13px;" onclick="sortBy('newest', this)">最新</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="sortBy('popular', this)">热门</button>
+                            <button class="filter-option" style="padding: 3px 12px; font-size: 13px;" onclick="sortBy('featured', this)">精选</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 作品展示 -->
+        <section class="mb-5 fade-in delay-1">
+            <h2 class="section-title">作品展示</h2>
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- 作品将通过JavaScript动态生成 -->
+            </div>
+        </section>
+        
+        <!-- VR作品展示 -->
+        <section class="vr-container mb-5 fade-in delay-2">
+            <h2 class="section-title">VR作品展示</h2>
+            <p class="mb-4">通过VR技术，您可以身临其境地体验我们的装修设计作品。</p>
+            <div id="vrContainer">
+                <!-- VR作品将通过JavaScript动态生成 -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>瑞圣合空间有限公司</h5>
+                    <p>专业装修材料供应商 - 品质保证，服务至上</p>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <h5>联系我们</h5>
+                    <p><i class="fas fa-phone me-2"></i> 13607171285</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> 湖北省·武汉市·硚口区</p>
+            <p>古田二路龙湖春江郦城二期底商13栋-402</p>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <p class="text-center mb-0">&copy; 2025 瑞圣合空间有限公司</p>
+        </div>
+    </footer>
+
+    <script src="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/popper.min.js"></script>
+    <script src="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/bootstrap.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script>
+        // 从JSON文件加载作品集数据
+        let portfolioItems = [];
+        let filteredItems = [];
+        let currentFilter = {
+            category: 'all',
+            style: 'all'
+        };
+        let currentSort = 'newest';
+
+        // 从API读取数据
+        async function loadPortfolioItems() {
+            try {
+                const response = await fetch('http://localhost:3002/api/portfolios');
+                if (response.ok) {
+                    portfolioItems = await response.json();
+                } else {
+                    // 如果API失败，使用默认数据
+                    portfolioItems = getDefaultPortfolioItems();
+                }
+            } catch (error) {
+                console.error('加载作品集数据失败:', error);
+                portfolioItems = getDefaultPortfolioItems();
+            }
+            
+            // 初始化筛选和排序
+            filterAndSortItems();
+            // 渲染轮播图
+            renderCarousel();
+        }
+
+        // 默认作品集数据
+        function getDefaultPortfolioItems() {
+            return [
+                {
+                    id: 1,
+                    name: '现代简约风格 VR展示',
+                    style: 'modern',
+                    type: 'vr',
+                    vrLink: 'https://www.vrjusteasy.com/view/your-vr-project-1',
+                    image: '../../img/作品展示1.jpg',
+                    description: '这是一个现代简约风格的装修设计项目，通过VR技术您可以360度全方位体验空间效果。',
+                    recommended: true,
+                    category: '住宅公寓'
+                },
+                {
+                    id: 2,
+                    name: '欧式风格 VR展示',
+                    style: 'european',
+                    type: 'vr',
+                    vrLink: 'https://www.vrjusteasy.com/view/your-vr-project-2',
+                    image: '../../img/作品展示2.jpg',
+                    description: '这是一个欧式风格的装修设计项目，通过VR技术您可以360度全方位体验空间效果。',
+                    recommended: true,
+                    category: '别墅豪宅'
+                },
+                {
+                    id: 3,
+                    name: '中式风格传统展示',
+                    style: 'chinese',
+                    type: 'traditional',
+                    image: '../../img/公司简介.jpg',
+                    description: '这是一个中式风格的装修设计项目，展现了传统中式元素与现代设计的完美融合。',
+                    recommended: false,
+                    category: '住宅公寓'
+                },
+                {
+                    id: 4,
+                    name: '工业风格传统展示',
+                    style: 'industrial',
+                    type: 'traditional',
+                    image: '../../img/公司商标.jpg',
+                    description: '这是一个工业风格的装修设计项目，展现了现代工业风的粗犷与时尚。',
+                    recommended: false,
+                    category: '商业空间'
+                }
+            ];
+        }
+
+        // 筛选和排序作品
+        function filterAndSortItems() {
+            // 筛选
+            filteredItems = portfolioItems.filter(item => {
+                const matchCategory = currentFilter.category === 'all' || item.category === currentFilter.category;
+                const matchStyle = currentFilter.style === 'all' || item.style === currentFilter.style;
+                return matchCategory && matchStyle;
+            });
+            
+            // 排序
+            switch (currentSort) {
+                case 'newest':
+                    filteredItems.sort((a, b) => b.id - a.id);
+                    break;
+                case 'popular':
+                    // 这里可以根据实际情况实现热门排序
+                    filteredItems.sort((a, b) => (b.recommended ? 1 : 0) - (a.recommended ? 1 : 0));
+                    break;
+                case 'featured':
+                    // 这里可以根据实际情况实现精选排序
+                    filteredItems.sort((a, b) => (b.recommended ? 1 : 0) - (a.recommended ? 1 : 0));
+                    break;
+            }
+            
+            // 渲染作品
+            renderPortfolio();
+            // 渲染VR作品
+            renderVRPortfolio();
+        }
+
+        // 渲染轮播图
+        function renderCarousel() {
+            const indicatorsContainer = document.getElementById('carouselIndicators');
+            const innerContainer = document.getElementById('carouselInner');
+            
+            indicatorsContainer.innerHTML = '';
+            innerContainer.innerHTML = '';
+            
+            // 获取推荐作品
+            const recommendedItems = portfolioItems.filter(item => item.recommended);
+            
+            console.log('推荐作品数量:', recommendedItems.length);
+            console.log('推荐作品数据:', recommendedItems);
+            
+            if (recommendedItems.length === 0) {
+                // 如果没有推荐作品，使用默认图片
+                const carouselItem = document.createElement('div');
+                carouselItem.className = 'carousel-item active';
+                carouselItem.innerHTML = `
+                    <img src="../../img/作品展示1.jpg" class="d-block w-100" alt="推荐作品">
+                    <div class="carousel-caption d-none d-md-block" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 15px; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);">
+                        <h5 style="margin: 0; font-size: 18px; font-weight: 500;">瑞圣合空间有限公司</h5>
+                    </div>
+                `;
+                innerContainer.appendChild(carouselItem);
+                return;
+            }
+            
+            recommendedItems.forEach((item, index) => {
+                // 创建指示器
+                const indicator = document.createElement('li');
+                indicator.setAttribute('data-target', '#portfolioCarousel');
+                indicator.setAttribute('data-slide-to', index);
+                if (index === 0) {
+                    indicator.className = 'active';
+                }
+                indicatorsContainer.appendChild(indicator);
+                
+                // 创建轮播项
+                const carouselItem = document.createElement('div');
+                carouselItem.className = `carousel-item ${index === 0 ? 'active' : ''}`;
+                // 确保图片路径正确，添加相对路径前缀
+                const imagePath = item.image.startsWith('http') || item.image.startsWith('data:') ? item.image : `../../${item.image}`;
+                console.log('轮播图图片路径:', imagePath);
+                carouselItem.innerHTML = `
+                    <img src="${imagePath}" class="d-block w-100" alt="${item.name}">
+                    <div class="carousel-caption d-none d-md-block" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 15px; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);">
+                        <h5 style="margin: 0; font-size: 18px; font-weight: 500;">${item.name}</h5>
+                    </div>
+                `;
+                innerContainer.appendChild(carouselItem);
+            });
+            
+            // 重新初始化轮播图
+            $('#portfolioCarousel').carousel('dispose');
+            $('#portfolioCarousel').carousel();
+        }
+
+        // 渲染作品
+        function renderPortfolio() {
+            const container = document.getElementById('portfolioGrid');
+            container.innerHTML = '';
+            
+            // 过滤出传统作品
+            const traditionalItems = filteredItems.filter(item => item.type === 'traditional');
+            
+            if (traditionalItems.length === 0) {
+                container.innerHTML = '<p class="text-center col-12">暂无作品</p>';
+                return;
+            }
+            
+            traditionalItems.forEach(item => {
+                const portfolioItem = document.createElement('div');
+                portfolioItem.className = 'portfolio-item';
+                portfolioItem.dataset.category = item.category;
+                portfolioItem.dataset.style = item.style;
+                // 确保图片路径正确，添加相对路径前缀
+                const imagePath = item.image.startsWith('http') || item.image.startsWith('data:') ? item.image : `../../${item.image}`;
+                portfolioItem.innerHTML = `
+                    <img src="${imagePath}" alt="${item.name}">
+                    <div class="portfolio-item-content">
+                        <h3 class="portfolio-item-title">${item.name}</h3>
+                        <div class="portfolio-item-category">${item.category} / ${getStyleName(item.style)}</div>
+                        <p class="portfolio-item-description">${item.description}</p>
+                        <div class="portfolio-item-actions">
+                            <button class="btn btn-sm btn-outline-primary" onclick="viewDetails(${item.id})">查看详情</button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(portfolioItem);
+            });
+        }
+
+        // 渲染VR作品
+        function renderVRPortfolio() {
+            const container = document.getElementById('vrContainer');
+            container.innerHTML = '';
+            
+            // 过滤出VR作品
+            const vrItems = filteredItems.filter(item => item.type === 'vr');
+            
+            if (vrItems.length === 0) {
+                container.innerHTML = '<p class="text-center">暂无VR作品</p>';
+                return;
+            }
+            
+            vrItems.forEach(item => {
+                const vrItem = document.createElement('div');
+                vrItem.className = 'vr-item';
+                vrItem.dataset.category = item.category;
+                vrItem.dataset.style = item.style;
+                
+                // 使用作品自己的VR链接，处理vrLink和vr_link两种属性名
+                const validVrLink = item.vrLink || item.vr_link || '';
+                
+                // 如果没有VR链接，显示提示信息
+                if (!validVrLink) {
+                    console.warn(`作品 "${item.name}" 没有VR链接`);
+                }
+                // 确保图片路径正确
+                const imagePath = item.image.startsWith('data:') || item.image.startsWith('http') ? item.image : `../../${item.image}`;
+                
+                vrItem.innerHTML = `
+                    <h3 class="h3 mb-0">${item.name}</h3>
+                    <div class="vr-image-container" onclick="${validVrLink ? `window.open('${validVrLink}', '_blank')` : 'alert(\'该作品暂无VR链接\')'}">
+                        <img src="${imagePath}" class="vr-image" alt="${item.name}">
+                        <div class="vr-overlay">
+                            <div class="vr-overlay-content">
+                                <div style="font-size: 48px; margin-bottom: 16px;">🌐</div>
+                                <p style="font-size: 16px; color: white; text-align: center; margin-bottom: 24px;">${validVrLink ? '点击查看VR展示' : '暂无VR链接'}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vr-description">
+                        <p>${item.description}</p>
+                    </div>
+                `;
+                container.appendChild(vrItem);
+            });
+        }
+
+        // 按分类筛选
+        function filterByCategory(category, element) {
+            // 只移除同组内的按钮样式
+            element.parentElement.querySelectorAll('.filter-option').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // 设置当前点击按钮的样式
+            element.classList.add('active');
+            
+            // 更新筛选条件
+            currentFilter.category = category;
+            
+            // 重新筛选和排序
+            filterAndSortItems();
+        }
+        
+        // 按风格筛选
+        function filterByStyle(style, element) {
+            // 只移除同组内的按钮样式
+            element.parentElement.querySelectorAll('.filter-option').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // 设置当前点击按钮的样式
+            element.classList.add('active');
+            
+            // 更新筛选条件
+            currentFilter.style = style;
+            
+            // 重新筛选和排序
+            filterAndSortItems();
+        }
+        
+        // 排序
+        function sortBy(sort, element) {
+            // 只移除同组内的按钮样式
+            element.parentElement.querySelectorAll('.filter-option').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // 设置当前点击按钮的样式
+            element.classList.add('active');
+            
+            // 更新排序条件
+            currentSort = sort;
+            
+            // 重新筛选和排序
+            filterAndSortItems();
+        }
+
+        // 查看详情
+        function viewDetails(id) {
+            const item = portfolioItems.find(p => p.id === id);
+            if (item) {
+                const vrLink = item.vrLink || item.vr_link || '';
+                alert(`作品详情：\n名称：${item.name}\n分类：${item.category}\n风格：${getStyleName(item.style)}\n类型：${item.type === 'vr' ? 'VR作品' : '传统作品'}\n${vrLink ? `VR链接：${vrLink}\n` : ''}描述：${item.description}`);
+            }
+        }
+
+        // 获取风格名称
+        function getStyleName(style) {
+            const styleMap = {
+                'modern': '现代',
+                'european': '欧式',
+                'chinese': '中式',
+                'minimalist': '极简',
+                'industrial': '工业风',
+                'scandinavian': '北欧',
+                'japanese': '日式',
+                'american': '美式',
+                'mediterranean': '地中海',
+                'postmodern': '后现代',
+                'light': '轻奢',
+                'zen': '禅意',
+                'vintage': '复古',
+                'mixed': '混搭',
+                'luxury': '奢华',
+                'southeast': '东南亚',
+                'ins': 'Ins风',
+                'cream': '奶油风',
+                'wood': '原木风',
+                'concrete': '混泥土风',
+                'french': '法式',
+                'italian': '意式'
+            };
+            return styleMap[style] || style;
+        }
+
+        // 页面加载时加载数据
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPortfolioItems();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - 瑞圣合空间有限公司</title>
+    <link rel="stylesheet" href="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        .section {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .company-intro {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 2rem;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: var(--secondary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-member {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 5px solid var(--light-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, #f6f9fc 0%, #e6f3ff 100%);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 300px;
+            background-color: #e6f3ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-weight: 600;
+            position: relative;
+        }
+        
+        #mapContainer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .login-modal .modal-content {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .login-modal .modal-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            border: none;
+            padding: 2rem;
+        }
+        
+        .login-modal .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .login-modal .modal-body {
+            padding: 2rem;
+        }
+        
+        .login-modal .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .login-modal .form-label {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .login-modal .form-control {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 1rem;
+        }
+        
+        .login-modal .form-control:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .login-modal .btn-primary {
+            background: linear-gradient(135deg, #3498db 0%, #1abc9c 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+        }
+        
+        .login-modal .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .login-modal .error-message {
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                瑞圣合空间有限公司
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">首页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="material-hub.html">材料库</a></li>
+                    <li class="nav-item"><a class="nav-link" href="material-detail.html">材料详情</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio.html">作品集</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html">采购单</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="about-us.html">关于我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="container text-center">
+            <h1 class="display-4 font-weight-bold mb-4">关于瑞圣合空间</h1>
+            <p class="lead mb-4">专业装修材料供应商 - 品质保证，服务至上</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="section fade-in">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="section-title">公司简介</h2>
+                    <button onclick="openAdminLogin()" class="btn btn-primary mt-2">管理端</button>
+                    <div class="company-intro">
+                        <p>瑞圣合空间有限公司成立于2010年，是一家专业从事装修材料供应的高新技术企业。公司总部位于武汉，经过十余年的稳健发展，已成为华中地区知名的装修材料供应商。</p>
+                        <p>我们专注于为住宅、商业、办公等不同空间提供高品质的装修材料和解决方案，与国内外众多知名品牌建立了长期稳定的合作关系，确保产品质量和供应稳定性。</p>
+                        <p>公司秉承"品质保证，服务至上"的经营理念，致力于为客户提供专业的产品咨询、技术支持和售后服务，成为众多装修公司、设计师和业主信赖的合作伙伴。</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex align-items-start">
+                    <img src="../../img/公司简介.jpg" alt="公司展示" class="img-fluid rounded w-100" style="box-shadow: 0 5px 10px rgba(0,0,0,0.1); height: 500px;">
+                </div>
+            </div>
+        </section>
+
+        <section class="section fade-in delay-1">
+            <h2 class="section-title text-center">核心价值观</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h4>品质第一</h4>
+                        <p>严格把控产品质量，只选择符合国际标准的优质材料，确保每一件产品都经得起时间考验。</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>客户至上</h4>
+                        <p>以客户需求为导向，提供个性化解决方案和贴心服务，建立长期稳定的合作关系。</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4>绿色环保</h4>
+                        <p>积极推广环保材料，倡导绿色装修理念，为创造健康舒适的居住环境贡献力量。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section fade-in delay-1">
+            <h2 class="section-title">发展历程</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2010年</div>
+                    <h5>公司成立</h5>
+                    <p>瑞圣合空间有限公司正式成立，专注于高端装修材料供应。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2013年</div>
+                    <h5>品牌拓展</h5>
+                    <p>与多家国际知名品牌建立合作关系，产品线进一步丰富。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2016年</div>
+                    <h5>仓储升级</h5>
+                    <p>投资建设现代化仓储中心，提升物流配送效率。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019年</div>
+                    <h5>数字化管理</h5>
+                    <p>引入先进的材料管理系统，实现库存、销售信息化管理。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022年</div>
+                    <h5>服务升级</h5>
+                    <p>推出设计师合作计划，为客户提供全方位装修解决方案。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section fade-in delay-2">
+            <h2 class="section-title text-center">核心团队</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <img src="../../img/公司简介.jpg" 
+                             alt="创始人/总经理" class="team-photo">
+                        <h5>赵圣均</h5>
+                        <p class="text-primary">创始人/总经理</p>
+                        <p>15年装修材料行业经验，对市场趋势有敏锐洞察力。</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <img src="../../img/公司商标.jpg" 
+                             alt="运营总监" class="team-photo">
+                        <h5>陈芳</h5>
+                        <p class="text-primary">运营总监</p>
+                        <p>负责供应链管理和客户服务，确保高效运营。</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <img src="../../img/小新.jpg" alt="招财猫" class="team-photo">
+                        <h5>小新</h5>
+                        <p class="text-primary">招财猫</p>
+                        <p>负责招财</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section fade-in delay-3">
+            <h2 class="section-title">联系我们</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h5>公司地址</h5>
+                                <p>古田二路龙湖春江郦城二期底商13栋-402</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h5>联系电话</h5>
+                                <p>13607171285</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="map-container">
+                        <div id="mapContainer"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal fade login-modal" id="adminLoginModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">管理员登录</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label class="form-label">账号</label>
+                            <input type="text" class="form-control" id="username" placeholder="请输入管理员账号">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">密码</label>
+                            <input type="password" class="form-control" id="password" placeholder="请输入密码">
+                        </div>
+                        <div id="errorMessage" class="error-message" style="display: none;"></div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="login()">登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+    <script>
+        window.onload = function() {
+            var map = new TMap.Map('mapContainer', {
+                center: new TMap.LatLng(28.647287,115.955804),
+                zoom: 17
+            });
+            
+            var marker = new TMap.MultiMarker({
+                map: map,
+                styles: {
+                    'default': new TMap.MarkerStyle({
+                        width: 25, 
+                        height: 35, 
+                        anchor: {x: 12, y: 35}
+                    })
+                },
+                geometries: [{
+                    id: 'marker1', 
+                    styleId: 'default', 
+                    position: new TMap.LatLng(28.647287,115.955804), 
+                    properties: {
+                        title: '瑞圣合有限公司'
+                    }
+                }]
+            });
+            
+            var infoWindow = new TMap.InfoWindow({
+                map: map, 
+                position: new TMap.LatLng(28.647287,115.955804), 
+                content: '瑞圣合有限公司', 
+                enableCustom: true
+            });
+            
+            marker.on('click', function(evt) {
+                infoWindow.open();
+            });
+        };
+    </script>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>瑞圣合空间有限公司</h5>
+                    <p>专业装修材料供应商 - 品质保证，服务至上</p>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <h5>联系我们</h5>
+                    <p><i class="fas fa-phone me-2"></i> 13607171285</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> 湖北省·武汉市·硚口区</p>
+            <p>古田二路龙湖春江郦城二期底商13栋-402</p>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <p class="text-center mb-0">&copy; 2025 瑞圣合空间有限公司</p>
+        </div>
+    </footer>
+
+    <script src="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/popper.min.js"></script>
+    <script src="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/bootstrap.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script>
+        function openAdminLogin() {
+            $('#adminLoginModal').modal('show');
+        }
+        
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (username === 'admin' && password === '123456') {
+                errorMessage.style.display = 'none';
+                $('#adminLoginModal').modal('hide');
+                window.location.href = '../../admin/html/material-management.html';
+            } else {
+                errorMessage.textContent = '账号或密码错误，请重试';
+                errorMessage.style.display = 'block';
+            }
+        }
+        
+        document.getElementById('loginForm').addEventListener('keypress', function(e) {
+            if (e.which === 13) {
+                login();
+            }
+        });
+    </script>
+</body>
+</html>

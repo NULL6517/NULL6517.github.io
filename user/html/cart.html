@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>采购单 - 瑞圣合空间有限公司</title>
+    <link rel="stylesheet" href="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        .cart-container {
+            margin: 2rem 0;
+        }
+        .cart-item {
+            border-bottom: 1px solid #e9ecef;
+            padding: 1.5rem 0;
+        }
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        .item-image {
+            max-width: 100px;
+            height: auto;
+            border-radius: 5px;
+        }
+        .item-info {
+            padding-left: 1rem;
+        }
+        .item-quantity {
+            display: flex;
+            align-items: center;
+        }
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #dee2e6;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            margin: 0 10px;
+        }
+        .cart-summary {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        .summary-total {
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-top: 1px solid #dee2e6;
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+        .action-buttons {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                瑞圣合空间有限公司
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">首页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="material-hub.html">材料库</a></li>
+                    <li class="nav-item"><a class="nav-link" href="material-detail.html">材料详情</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio.html">作品集</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="cart.html">采购单</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about-us.html">关于我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <main class="container">
+        <div class="cart-container fade-in">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="mb-4" style="color: var(--primary-color);">采购清单</h3>
+                    <div id="cartItems">
+                        <!-- 采购单项目将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="cart-summary">
+                        <h4 class="mb-4">采购单汇总</h4>
+                        <div class="summary-item">
+                            <span>商品数量</span>
+                            <span id="totalQuantity">0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>商品总价</span>
+                            <span id="totalPrice">¥0.00</span>
+                        </div>
+                        <div class="summary-total">
+                            <span>总计</span>
+                            <span id="grandTotal">¥0.00</span>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary btn-block mb-2" onclick="clearCart()">
+                                <i class="fas fa-trash me-2"></i>清空采购单
+                            </button>
+                            <button class="btn btn-success btn-block mb-2" onclick="exportToExcel()">
+                                <i class="fas fa-file-excel me-2"></i>导出Excel
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>瑞圣合空间有限公司</h5>
+                    <p>专业装修材料供应商 - 品质保证，服务至上</p>
+                </div>
+
+
+
+                <div class="col-md-4 mb-4">
+                    <h5>联系我们</h5>
+                    <p><i class="fas fa-phone me-2"></i> 13607171285</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> 湖北省·武汉市·硚口区</p>
+            <p>古田二路龙湖春江郦城二期底商13栋-402</p>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <p class="text-center mb-0">&copy; 2025 瑞圣合空间有限公司</p>
+        </div>
+    </footer>
+
+    <script src="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/popper.min.js"></script>
+    <script src="https://demo-html-zip.oss-cn-hangzhou.aliyuncs.com/js/bootstrap.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+</html>
